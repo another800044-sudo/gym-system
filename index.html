@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>تسجيل الدخول - Gym System</title>
+
   <style>
     body {
       background: #111;
@@ -12,14 +13,20 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      direction: rtl;
     }
 
     .login-box {
       background: #222;
       padding: 25px;
       border-radius: 10px;
-      width: 300px;
+      width: 320px;
       text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.7);
+    }
+
+    h2 {
+      margin-bottom: 20px;
     }
 
     input {
@@ -28,6 +35,8 @@
       margin: 10px 0;
       border-radius: 5px;
       border: none;
+      outline: none;
+      font-size: 14px;
     }
 
     button {
@@ -38,14 +47,21 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      opacity: 0.9;
     }
 
     .error {
-      color: red;
+      color: #ff4d4d;
       margin-top: 10px;
+      min-height: 20px;
     }
   </style>
 </head>
+
 <body>
 
   <div class="login-box">
@@ -59,50 +75,65 @@
     <div class="error" id="error"></div>
   </div>
 
-  <!-- Firebase -->
+  <!-- Firebase Libraries -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
   <script>
-    // 🔴 لازم تحط بيانات Firebase بتاعتك هنا
+    /***********************
+     * Firebase Config
+     * غيّر القيم دي بس
+     ***********************/
     const firebaseConfig = {
-      apiKey: "PUT_API_KEY",
-      authDomain: "PUT_DOMAIN",
-      projectId: "PUT_PROJECT_ID",
+      apiKey: "AIzaSyBnVgP2RYFoX2qVv-PGLDU3bqP4o-CQKkY",
+      authDomain: "the-miz-3fc4e.firebaseapp.com",
+      projectId: "the-miz-3fc4e"
     };
 
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
+    console.log("Firebase Connected ✅");
+
+    /***********************
+     * Login Function
+     ***********************/
     async function login() {
-      const phone = document.getElementById("phone").value;
+      const phone = document.getElementById("phone").value.trim();
       const password = document.getElementById("password").value;
       const error = document.getElementById("error");
 
       error.innerText = "";
 
       if (!phone || !password) {
-        error.innerText = "من فضلك املأ كل البيانات";
+        error.innerText = "من فضلك أدخل رقم الموبايل وكلمة المرور";
         return;
       }
 
-      const snapshot = await db
-        .collection("users")
-        .where("phone", "==", phone)
-        .where("password", "==", password)
-        .get();
+      try {
+        const snapshot = await db
+          .collection("users")
+          .where("phone", "==", phone)
+          .where("password", "==", password)
+          .get();
 
-      if (snapshot.empty) {
-        error.innerText = "رقم الموبايل أو كلمة المرور غير صحيحة";
-        return;
+        if (snapshot.empty) {
+          error.innerText = "رقم الموبايل أو كلمة المرور غير صحيحة";
+          return;
+        }
+
+        // Login Success
+        snapshot.forEach(doc => {
+          localStorage.setItem("userId", doc.id);
+          localStorage.setItem("role", doc.data().role);
+          window.location.href = "profile.html";
+        });
+
+      } catch (err) {
+        console.error(err);
+        error.innerText = "حصل خطأ، حاول مرة تانية";
       }
-
-      // تسجيل الدخول نجح
-      snapshot.forEach(doc => {
-        localStorage.setItem("userId", doc.id);
-        localStorage.setItem("role", doc.data().role);
-        window.location.href = "profile.html";
-      });
     }
   </script>
 
