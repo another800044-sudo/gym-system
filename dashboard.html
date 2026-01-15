@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Gym Client Dashboard</title>
+
+<style>
+:root {
+  --bg: #050816;
+  --card: #0f172a;
+  --accent: #22c55e;
+  --accent2: #38bdf8;
+  --text: #ffffff;
+  --muted: #94a3b8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: radial-gradient(circle at top, #020617, #050816);
+  color: var(--text);
+}
+
+/* ===== Layout ===== */
+.wrapper {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ===== Header ===== */
+.header {
+  background: linear-gradient(135deg, #22c55e, #38bdf8);
+  border-radius: 28px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 25px;
+  align-items: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,.6);
+}
+
+.header img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  object-fit: cover;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #020617;
+}
+
+.header p {
+  margin: 6px 0 0;
+  font-weight: bold;
+  color: #020617;
+}
+
+.goal {
+  background: #020617;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+/* ===== Tabs ===== */
+.tabs {
+  margin-top: 30px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  background: var(--card);
+  padding: 12px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  color: var(--muted);
+  font-weight: bold;
+}
+
+.tab.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #020617;
+}
+
+/* ===== Content ===== */
+.content {
+  margin-top: 25px;
+}
+
+/* ===== Cards ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  color: var(--accent);
+}
+
+/* ===== Stat Card ===== */
+.stat {
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.stat span {
+  font-size: 14px;
+  color: var(--muted);
+  display: block;
+}
+
+/* ===== List ===== */
+.list-item {
+  background: #020617;
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ===== Badge ===== */
+.badge {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #020617;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <!-- 🔝 HEADER -->
+  <div class="header">
+    <img src="https://via.placeholder.com/150">
+    <div>
+      <h1>أحمد محمد علي</h1>
+      <p>📱 01000000000</p>
+    </div>
+    <div class="goal">🎯 تضخيم</div>
+  </div>
+
+  <!-- 📑 TABS -->
+  <div class="tabs">
+    <div class="tab active">Overview</div>
+    <div class="tab">Body Stats</div>
+    <div class="tab">Workout Plan</div>
+    <div class="tab">Nutrition</div>
+    <div class="tab">Supplements</div>
+  </div>
+
+  <!-- 📦 CONTENT -->
+  <div class="content">
+
+  <div class="grid">
+    <div class="card">
+      <h3>⚖️ الوزن</h3>
+      <div class="stat">85 <small>kg</small></div>
+      <span class="badge">وزن حالي</span>
+    </div>
+
+    <div class="card">
+      <h3>📏 الطول</h3>
+      <div class="stat">178 <small>cm</small></div>
+      <span class="badge">ثابت</span>
+    </div>
+
+    <div class="card">
+      <h3>🎯 الهدف</h3>
+      <div class="stat">تضخيم</div>
+      <span class="badge">خطة مخصصة</span>
+    </div>
+
+    <div class="card">
+      <h3>📊 BMI</h3>
+      <div class="stat">26.8</div>
+      <span class="badge">رياضي</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:25px;">
+    <h3>📈 التقدم العام</h3>
+
+    وزن الجسم
+    <div style="background:#020617;border-radius:20px;overflow:hidden;margin:6px 0 15px;">
+      <div style="width:70%;background:linear-gradient(135deg,#22c55e,#38bdf8);padding:8px;"></div>
+    </div>
+
+    نسبة الدهون
+    <div style="background:#020617;border-radius:20px;overflow:hidden;margin-top:6px;">
+      <div style="width:55%;background:linear-gradient(135deg,#f97316,#ef4444);padding:8px;"></div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:25px;">
+    <div class="card">
+      <h3>💪 الذراع</h3>
+      <div class="stat">38 <small>cm</small></div>
+    </div>
+
+    <div class="card">
+      <h3>🫀 الصدر</h3>
+      <div class="stat">105 <small>cm</small></div>
+    </div>
+
+    <div class="card">
+      <h3>🔥 الوسط</h3>
+      <div class="stat">82 <small>cm</small></div>
+    </div>
+
+    <div class="card">
+      <h3>🦵 الفخذ</h3>
+      <div class="stat">60 <small>cm</small></div>
+    </div>
+  </div>
+
+</div>
+
+
+      <div class="card">
+        <span class="stat">178 <small>cm</small></span>
+        <span>الطول</span>
+      </div>
+
+      <div class="card">
+        <span class="stat">5 أيام</span>
+        <span>نظام التمرين</span>
+      </div>
+
+      <div class="card">
+        <span class="stat">3.5 L</span>
+        <span>المياه اليومية</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
