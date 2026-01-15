@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>بروفايل العميل</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #fff;
+}
+
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  background: #1e293b;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-header img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid #22c55e;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.phone {
+  color: #94a3b8;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.info-box {
+  background: #020617;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.info-box span {
+  display: block;
+  color: #94a3b8;
+  margin-bottom: 5px;
+}
+
+.section-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #22c55e;
+}
+
+.list-item {
+  background: #020617;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- 🔵 الهيدر -->
+  <div class="card profile-header">
+    <img src="https://via.placeholder.com/150">
+    <div>
+      <div class="name">اسم العميل الثلاثي</div>
+      <div class="phone">01000000000</div>
+    </div>
+  </div>
+
+  <!-- 🟢 بيانات أساسية -->
+  <div class="card info-grid">
+    <div class="info-box">
+      <span>السن</span>
+      25 سنة
+    </div>
+    <div class="info-box">
+      <span>كود الجيم</span>
+      12345
+    </div>
+    <div class="info-box">
+      <span>الكابتن</span>
+      كابتن أحمد
+    </div>
+  </div>
+
+  <!-- 🟠 التمارين -->
+  <div class="card">
+    <div class="section-title">🏋️ التمارين</div>
+    <div class="list-item">صدر – 4 مجموعات</div>
+    <div class="list-item">باي – 3 مجموعات</div>
+    <div class="list-item">كتف – 4 مجموعات</div>
+  </div>
+
+  <!-- 🔴 النظام الغذائي -->
+  <div class="card">
+    <div class="section-title">🥗 النظام الغذائي</div>
+    <div class="list-item">فطار: شوفان + موز</div>
+    <div class="list-item">غداء: فراخ + رز</div>
+    <div class="list-item">عشاء: تونة + سلطة</div>
+  </div>
+
+  <!-- ⚫ آخر تعديل -->
+  <div class="footer">
+    آخر تعديل بواسطة: كابتن أحمد – 14 / 1 / 2026
+  </div>
+
+</div>
+
+</body>
+</html>
