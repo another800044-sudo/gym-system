@@ -125,10 +125,30 @@
 
         // Login Success
         snapshot.forEach(doc => {
-          localStorage.setItem("userId", doc.id);
-          localStorage.setItem("role", doc.data().role);
-          window.location.href = "profile.html";
-        });
+  const data = doc.data();
+
+  localStorage.setItem("userId", doc.id);
+  localStorage.setItem("role", data.role);
+
+  const SUPER_ADMIN_PHONE = "01097642342"; 
+  if (data.phone === SUPER_ADMIN_PHONE) {
+    localStorage.setItem("role", "admin");
+    window.location.href = "admin-dashboard.html";
+    return;
+  }
+
+  if (data.role === "client") {
+    if (!data.captainId) {
+      window.location.href = "choose-captain.html";
+    } else {
+      window.location.href = "profile.html";
+    }
+  }
+
+  if (data.role === "captain") {
+    window.location.href = "captain-dashboard.html";
+  }
+});
 
       } catch (err) {
         console.error(err);
